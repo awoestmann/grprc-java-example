@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_package = "mathservice.models";
+
+package mathservice;
+
+service MathService {
+    rpc add (AddRequest) returns (AddResponse) {}
+    rpc divide (DivideRequest) returns (DivideResponse) {}
+}
+
+message AddRequest {
+    int32 summand1 = 1;
+    int32 summand2 = 2;
+}
+
+message AddResponse {
+    string equation = 1;
+    int32 result = 2;
+}
+
+message DivideRequest {
+    float dividend = 1;
+    float divisor = 2;
+}
+
+message DivideResponse {
+    float result = 1;
+    string equation = 2;
+    ErrorMessage errorMessage = 3;
+}
+
+message ErrorMessage {
+    int32 errorCode = 1;
+    string errorMessage = 2;
+}
